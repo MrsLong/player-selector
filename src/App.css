@@ -1,0 +1,12 @@
+.search {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+}
+
+.card {
+  border: 1px blue solid;
+  margin-top: 1rem;
+}

@@ -27,24 +27,36 @@ class App extends Component {
             onChange={this.handleChange.bind(this)}
           />
           <button>ADD</button>
+
+          {this.state.value.length > 0 ? (
+            <div className="dropdown-menu show">
+              <a className="dropdown-item">option 1</a>
+              <a className="dropdown-item">option 2</a>
+              <a className="dropdown-item">option 3</a>
+            </div>
+          ) : null}
         </div>
-        <div className="Card">
+        <div className="card">
           <p>PLAYER NAME</p>
           <button>X</button>
           <table>
             <thead>
-              <th>POSITION</th>
-              <th>BATS</th>
-              <th>THROWS</th>
-              <th>TEAM</th>
-              <th>LEVEL</th>
+              <tr>
+                <th>POSITION</th>
+                <th>BATS</th>
+                <th>THROWS</th>
+                <th>TEAM</th>
+                <th>LEVEL</th>
+              </tr>
             </thead>
             <tbody>
-              <td>#</td>
-              <td>#</td>
-              <td>#</td>
-              <td>#</td>
-              <td>#</td>
+              <tr>
+                <td>#</td>
+                <td>#</td>
+                <td>#</td>
+                <td>#</td>
+                <td>#</td>
+              </tr>
             </tbody>
           </table>
         </div>
