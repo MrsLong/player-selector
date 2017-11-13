@@ -1,15 +1,31 @@
 import React, { Component } from 'react';
 import './App.css';
+import Players from './stl-players-2017.json';
 
 class App extends Component {
+  state = {
+    players: Players,
+    value: '',
+    selectedPlayers: []
+  };
+
+  handleChange(event) {
+    this.setState({ value: event.target.value });
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
+        <header>
           <h1>Player Selector</h1>
         </header>
         <div className="search">
-          <input type="search" placeholder="search for a player" />
+          <input
+            type="search"
+            placeholder="search for a player"
+            value={this.state.value}
+            onChange={this.handleChange.bind(this)}
+          />
           <button>ADD</button>
         </div>
         <div className="Card">
