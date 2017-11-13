@@ -4,7 +4,9 @@ import Players from './stl-players-2017.json';
 
 class App extends Component {
   state = {
-    players: Players,
+    players: Players.map(
+      player => {} /*destructure json data to fill in missing data*/
+    ),
     value: '',
     selectedPlayers: []
   };
@@ -14,6 +16,17 @@ class App extends Component {
   }
 
   render() {
+    let matchedPlayers = this.state.players.filter(
+      player =>
+        player.firstName
+          .toUpperCase()
+          .startsWith(this.state.value.toUpperCase()) ||
+        player.middleName
+          .toUpperCase()
+          .startsWith(this.state.value.toUpperCase()) ||
+        player.lastName.toUpperCase().startsWith(this.state.value.toUpperCase())
+    );
+
     return (
       <div className="App">
         <header>
@@ -27,12 +40,11 @@ class App extends Component {
             onChange={this.handleChange.bind(this)}
           />
           <button>ADD</button>
-
           {this.state.value.length > 0 ? (
             <div className="dropdown-menu show">
-              <a className="dropdown-item">option 1</a>
-              <a className="dropdown-item">option 2</a>
-              <a className="dropdown-item">option 3</a>
+              <a className="dropdown-item">
+                {matchedPlayers[0] /*map over matched players*/}
+              </a>
             </div>
           ) : null}
         </div>
