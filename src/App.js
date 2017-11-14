@@ -23,6 +23,14 @@ class App extends Component {
     });
   }
 
+  removePlayer(selectedPlayer) {
+    this.setState({
+      selectedPlayers: this.state.selectedPlayers.filter(
+        x => x !== selectedPlayer
+      )
+    });
+  }
+
   render() {
     let matchedPlayers = this.state.players.filter(
       player =>
@@ -79,7 +87,9 @@ class App extends Component {
                   {selectedPlayer.lastName}, {selectedPlayer.firstName}{' '}
                   {selectedPlayer.middleName}
                 </p>
-                <button>X</button>
+                <button onClick={this.removePlayer.bind(this, selectedPlayer)}>
+                  X
+                </button>
                 <table>
                   <thead>
                     <tr>
