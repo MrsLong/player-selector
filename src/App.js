@@ -47,7 +47,9 @@ class App extends Component {
             value={this.state.value}
             onChange={this.handleChange.bind(this)}
           />
-          <button>ADD</button>
+          <button onClick={this.playerSelected.bind(this, matchedPlayers[0])}>
+            ADD
+          </button>
           {this.state.value.length > 0 ? (
             <ul className="dropdown">
               {matchedPlayers.map(matchedPlayer => (
@@ -63,30 +65,37 @@ class App extends Component {
             </ul>
           ) : null}
         </div>
-        <div className="card">
-          <p>PLAYER NAME</p>
-          <button>X</button>
-          <table>
-            <thead>
-              <tr>
-                <th>POSITION</th>
-                <th>BATS</th>
-                <th>THROWS</th>
-                <th>TEAM</th>
-                <th>LEVEL</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>#</td>
-                <td>#</td>
-                <td>#</td>
-                <td>#</td>
-                <td>#</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        {this.state.selectedPlayers.length > 0
+          ? this.state.selectedPlayers.map(selectedPlayer => (
+              <div className="card" key={selectedPlayer.mlbamId}>
+                <p>
+                  {selectedPlayer.lastName}, {selectedPlayer.firstName}{' '}
+                  {selectedPlayer.middleName}
+                </p>
+                <button>X</button>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>POSITION</th>
+                      <th>BATS</th>
+                      <th>THROWS</th>
+                      <th>TEAM</th>
+                      <th>LEVEL</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>{selectedPlayer.position}</td>
+                      <td>{selectedPlayer.bats}</td>
+                      <td>{selectedPlayer.throws}</td>
+                      <td>{selectedPlayer.level}</td>
+                      <td>{selectedPlayer.team}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            ))
+          : null}
       </div>
     );
   }
