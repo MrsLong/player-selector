@@ -4,9 +4,10 @@ import Players from './stl-players-2017.json';
 
 class App extends Component {
   state = {
-    players: Players.map(
-      player => {} /*destructure json data to fill in missing data*/
-    ),
+    players: Players.map(({ middleName = '', ...rest }) => ({
+      middleName,
+      ...rest
+    })),
     value: '',
     selectedPlayers: []
   };
@@ -42,9 +43,12 @@ class App extends Component {
           <button>ADD</button>
           {this.state.value.length > 0 ? (
             <div className="dropdown-menu show">
-              <a className="dropdown-item">
-                {matchedPlayers[0] /*map over matched players*/}
-              </a>
+              {matchedPlayers.map(matchedPlayer => (
+                <a className="dropdown-item" key={matchedPlayer.mlbamId}>
+                  {matchedPlayer.lastName}, {matchedPlayer.firstName}{' '}
+                  {matchedPlayer.middleName}
+                </a>
+              ))}
             </div>
           ) : null}
         </div>
