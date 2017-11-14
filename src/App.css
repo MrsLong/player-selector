@@ -1,5 +1,24 @@
+.App {
+  width: 90%;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+}
+
 .search {
   position: relative;
+  width: 100%;
+  display: flex;
+}
+
+.search__input {
+  width: 100%;
+}
+
+.search__add {
+  float: right;
 }
 
 .dropdown {
@@ -8,6 +27,7 @@
   padding: 0;
   border: 1px gray solid;
   width: 100%;
+  top: 100%;
 }
 
 .dropdown__item {
@@ -19,4 +39,31 @@
 .card {
   border: 1px blue solid;
   margin-top: 1rem;
+}
+
+/* --- Responsive table styles ---*/
+
+.card__data th {
+  display: none;
+}
+
+.card__data td {
+  display: block;
+}
+
+.card__data td:before {
+  content: attr(data-th)': ';
+  font-weight: bold;
+  display: inline-block;
+}
+
+@media (min-width: 480px) {
+  .card__data td:before {
+    display: none;
+  }
+
+  .card__data th,
+  .card__data td {
+    display: table-cell;
+  }
 }

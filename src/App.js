@@ -53,12 +53,16 @@ class App extends Component {
         </header>
         <div className="search">
           <input
+            className="search__input"
             type="search"
             placeholder="search for a player"
             value={this.state.value}
             onChange={this.handleChange.bind(this)}
           />
-          <button onClick={this.playerSelected.bind(this, matchedPlayers[0])}>
+          <button
+            className="search__add"
+            onClick={this.playerSelected.bind(this, matchedPlayers[0])}
+          >
             ADD
           </button>
           {this.state.value.length > 0 ? (
@@ -90,23 +94,23 @@ class App extends Component {
                 <button onClick={this.removePlayer.bind(this, selectedPlayer)}>
                   X
                 </button>
-                <table>
+                <table className="card__data">
                   <thead>
                     <tr>
                       <th>POSITION</th>
                       <th>BATS</th>
                       <th>THROWS</th>
-                      <th>TEAM</th>
                       <th>LEVEL</th>
+                      <th>TEAM</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td>{selectedPlayer.position}</td>
-                      <td>{selectedPlayer.bats}</td>
-                      <td>{selectedPlayer.throws}</td>
-                      <td>{selectedPlayer.level}</td>
-                      <td>{selectedPlayer.team}</td>
+                      <td data-th="Position">{selectedPlayer.position}</td>
+                      <td data-th="Bats">{selectedPlayer.bats}</td>
+                      <td data-th="Throws">{selectedPlayer.throws}</td>
+                      <td data-th="Level">{selectedPlayer.level}</td>
+                      <td data-th="Team">{selectedPlayer.team}</td>
                     </tr>
                   </tbody>
                 </table>
