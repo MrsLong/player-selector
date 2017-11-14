@@ -26,13 +26,16 @@ class App extends Component {
   render() {
     let matchedPlayers = this.state.players.filter(
       player =>
-        player.firstName
+        !this.state.selectedPlayers.includes(player) &&
+        (player.firstName
           .toUpperCase()
           .startsWith(this.state.value.toUpperCase()) ||
-        player.middleName
-          .toUpperCase()
-          .startsWith(this.state.value.toUpperCase()) ||
-        player.lastName.toUpperCase().startsWith(this.state.value.toUpperCase())
+          player.middleName
+            .toUpperCase()
+            .startsWith(this.state.value.toUpperCase()) ||
+          player.lastName
+            .toUpperCase()
+            .startsWith(this.state.value.toUpperCase()))
     );
 
     return (
@@ -52,16 +55,20 @@ class App extends Component {
           </button>
           {this.state.value.length > 0 ? (
             <ul className="dropdown">
-              {matchedPlayers.map(matchedPlayer => (
-                <li
-                  className="dropdown__item"
-                  key={matchedPlayer.mlbamId}
-                  onClick={this.playerSelected.bind(this, matchedPlayer)}
-                >
-                  {matchedPlayer.lastName}, {matchedPlayer.firstName}{' '}
-                  {matchedPlayer.middleName}
-                </li>
-              ))}
+              {matchedPlayers.length > 0 ? (
+                matchedPlayers.map(matchedPlayer => (
+                  <li
+                    className="dropdown__item"
+                    key={matchedPlayer.mlbamId}
+                    onClick={this.playerSelected.bind(this, matchedPlayer)}
+                  >
+                    {matchedPlayer.lastName}, {matchedPlayer.firstName}{' '}
+                    {matchedPlayer.middleName}
+                  </li>
+                ))
+              ) : (
+                <li className="dropdown__item">No matching players</li>
+              )}
             </ul>
           ) : null}
         </div>

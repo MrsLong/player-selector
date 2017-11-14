@@ -1,4 +1,5 @@
-//connect selected players to the cards
-//map over selected players and make a card for each one
-
+//make it so you can't add the same person
+// to selected players twice
 //style card to fit information
+
+<li>No matching players</li>;
