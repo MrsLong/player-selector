@@ -16,6 +16,13 @@ class App extends Component {
     this.setState({ value: event.target.value });
   }
 
+  playerSelected(matchedPlayer) {
+    this.setState({
+      value: '',
+      selectedPlayers: [...this.state.selectedPlayers, matchedPlayer]
+    });
+  }
+
   render() {
     let matchedPlayers = this.state.players.filter(
       player =>
@@ -42,14 +49,18 @@ class App extends Component {
           />
           <button>ADD</button>
           {this.state.value.length > 0 ? (
-            <div className="dropdown-menu show">
+            <ul className="dropdown">
               {matchedPlayers.map(matchedPlayer => (
-                <a className="dropdown-item" key={matchedPlayer.mlbamId}>
+                <li
+                  className="dropdown__item"
+                  key={matchedPlayer.mlbamId}
+                  onClick={this.playerSelected.bind(this, matchedPlayer)}
+                >
                   {matchedPlayer.lastName}, {matchedPlayer.firstName}{' '}
                   {matchedPlayer.middleName}
-                </a>
+                </li>
               ))}
-            </div>
+            </ul>
           ) : null}
         </div>
         <div className="card">

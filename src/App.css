@@ -2,8 +2,18 @@
   position: relative;
 }
 
-.dropdown-menu {
+.dropdown {
   position: absolute;
+  margin: 0;
+  padding: 0;
+  border: 1px gray solid;
+  width: 100%;
+}
+
+.dropdown__item {
+  list-style-type: none;
+  background: white;
+  /*add an on hover and on click style*/
 }
 
 .card {
