@@ -87,21 +87,25 @@ class App extends Component {
         {this.state.selectedPlayers.length > 0
           ? this.state.selectedPlayers.map(selectedPlayer => (
               <div className="card" key={selectedPlayer.mlbamId}>
-                <p>
-                  {selectedPlayer.lastName}, {selectedPlayer.firstName}{' '}
-                  {selectedPlayer.middleName}
-                </p>
-                <button onClick={this.removePlayer.bind(this, selectedPlayer)}>
-                  X
-                </button>
-                <table className="card__data">
+                <div className="card__header">
+                  <h2 className="card__playerName">
+                    {selectedPlayer.lastName}, {selectedPlayer.firstName}{' '}
+                    {selectedPlayer.middleName}
+                  </h2>
+                  <button
+                    className="card__button"
+                    onClick={this.removePlayer.bind(this, selectedPlayer)}
+                  >
+                    X
+                  </button>
+                </div>
+                <table className="card__table">
                   <thead>
                     <tr>
                       <th>POSITION</th>
                       <th>BATS</th>
                       <th>THROWS</th>
                       <th>LEVEL</th>
-                      <th>TEAM</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -110,7 +114,12 @@ class App extends Component {
                       <td data-th="Bats">{selectedPlayer.bats}</td>
                       <td data-th="Throws">{selectedPlayer.throws}</td>
                       <td data-th="Level">{selectedPlayer.level}</td>
-                      <td data-th="Team">{selectedPlayer.team}</td>
+                    </tr>
+                    <tr>
+                      <th>TEAM</th>
+                      <td colspan="3" data-th="Team">
+                        {selectedPlayer.team}
+                      </td>
                     </tr>
                   </tbody>
                 </table>
