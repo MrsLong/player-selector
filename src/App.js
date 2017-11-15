@@ -62,6 +62,9 @@ class App extends Component {
           <button
             className="search__add"
             onClick={this.playerSelected.bind(this, matchedPlayers[0])}
+            disabled={
+              this.state.value.length === 0 || matchedPlayers.length === 0
+            }
           >
             ADD
           </button>
