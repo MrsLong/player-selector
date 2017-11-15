@@ -56,6 +56,7 @@ h1 {
   border-bottom: 3px darkred solid;
   color: white;
   background-color: darkred;
+  padding-left: 5px;
 }
 
 .card__button {
@@ -64,6 +65,7 @@ h1 {
   border: none;
   border-bottom: 3px darkred solid;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .card__button:hover {
@@ -78,7 +80,7 @@ h1 {
 
 .card__table td {
   display: block;
-  padding: 5px 0;
+  padding: 5px 0 0 5px;
 }
 
 .card__table td:before {
