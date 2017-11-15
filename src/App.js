@@ -3,6 +3,7 @@ import './App.css';
 import Players from './stl-players-2017.json';
 import Cardlist from './Cardlist';
 import Search from './Search';
+import { arrayMove } from 'react-sortable-hoc';
 
 class App extends Component {
   state = {
@@ -33,6 +34,12 @@ class App extends Component {
     });
   }
 
+  onSortEnd({ oldIndex, newIndex }) {
+    this.setState({
+      selectedPlayers: arrayMove(this.state.selectedPlayers, oldIndex, newIndex)
+    });
+  }
+
   render() {
     return (
       <div className="App">
@@ -47,7 +54,9 @@ class App extends Component {
           playerSelected={this.playerSelected.bind(this)}
         />
         <Cardlist
+          lockAxis={'y'}
           selectedPlayers={this.state.selectedPlayers}
+          onSortEnd={this.onSortEnd.bind(this)}
           removePlayer={this.removePlayer.bind(this)}
         />
       </div>

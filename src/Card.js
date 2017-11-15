@@ -1,6 +1,7 @@
 import React from 'react';
+import { SortableElement } from 'react-sortable-hoc';
 
-const Card = ({ selectedPlayer, removePlayer }) => (
+const Card = SortableElement(({ selectedPlayer, removePlayer }) => (
   <div className="card">
     <div className="card__header">
       <h2 className="card__playerName">
@@ -39,6 +40,6 @@ const Card = ({ selectedPlayer, removePlayer }) => (
       </tbody>
     </table>
   </div>
-);
+));
 
 export default Card;
