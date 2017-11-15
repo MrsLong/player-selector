@@ -75,8 +75,6 @@ h1 {
   font-size: 1em;
 }
 
-/* --- Responsive table styles ---*/
-
 .card__table th {
   display: none;
 }
@@ -92,21 +90,3 @@ h1 {
   width: 80px;
   display: inline-block;
 }
-
-/*@media (min-width: 480px) {*/
-/*.card__table {*/
-/*table-layout: fixed;*/
-/*width: 100%;*/
-/*}*/
-
-/*.card__table td:before {*/
-/*display: none;*/
-/*}*/
-
-/*.card__table th,*/
-/*.card__table td {*/
-/*display: table-cell;*/
-/*text-align: center;*/
-/*border: 1px gray solid;*/
-/*}*/
-/*}*/

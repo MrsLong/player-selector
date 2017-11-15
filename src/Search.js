@@ -5,7 +5,7 @@ const Search = ({
   players,
   selectedPlayers,
   value,
-  handleChange,
+  inputChanged,
   playerSelected
 }) => {
   let matchedPlayers = players.filter(
@@ -23,7 +23,7 @@ const Search = ({
         type="search"
         placeholder="search for a player"
         value={value}
-        onChange={handleChange}
+        onChange={inputChanged}
       />
       <button
         className="search__add"

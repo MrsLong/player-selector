@@ -7,6 +7,7 @@ import { arrayMove } from 'react-sortable-hoc';
 
 class App extends Component {
   state = {
+    // Clean up missing data from the JSON file
     players: Players.map(({ middleName = '', ...rest }) => ({
       middleName,
       ...rest
@@ -15,7 +16,7 @@ class App extends Component {
     selectedPlayers: []
   };
 
-  handleChange(event) {
+  inputChanged(event) {
     this.setState({ value: event.target.value });
   }
 
@@ -50,7 +51,7 @@ class App extends Component {
           players={this.state.players}
           selectedPlayers={this.state.selectedPlayers}
           value={this.state.value}
-          handleChange={this.handleChange.bind(this)}
+          inputChanged={this.inputChanged.bind(this)}
           playerSelected={this.playerSelected.bind(this)}
         />
         <Cardlist

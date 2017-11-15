@@ -16,6 +16,10 @@ const Card = SortableElement(({ selectedPlayer, removePlayer }) => (
       </button>
     </div>
     <table className="card__table">
+      {/*
+        This table head is not rendered, but is used by screen readers
+        and can be used in the future for responsive tables
+      */}
       <thead>
         <tr>
           <th>POSITION</th>
